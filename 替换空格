@@ -1,0 +1,23 @@
+class Solution {
+public:
+	void replaceSpace(char *str, int length) {
+		int num_kong = 0;
+		for (int i = 0; i < length; i++)  //首先记录空格数目
+			if (str[i] == ' ') num_kong++;
+		int length_new = length + num_kong * 2;   //将空格替换后的长度
+		length_new--;
+		for (int i = length - 1; i >= 0; i--)
+		{
+			if (str[i] == ' ')
+			{
+				str[length_new--] = '0';
+				str[length_new--] = '2';
+				str[length_new--] = '%';
+			}
+			else str[length_new--] = str[i];
+		}
+	}
+};
+/*
+请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
+*/
