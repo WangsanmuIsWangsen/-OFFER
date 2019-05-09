@@ -1,0 +1,25 @@
+class Solution {
+public:
+	int  NumberOf1(int n) {
+		int num = 0;
+		if (n >= 0)
+		{
+			while (n)
+			{
+				if (n % 2 == 1) num++;
+				n = n / 2;
+			}
+		}
+		else {  //负数补码表示
+			for (int i = 0; i < 32; i++)
+			{
+				if (0x00000001 & n) num++;
+				n = n >> 1;
+			}
+		}
+		return num;
+	}
+};
+/*
+输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示
+*/
